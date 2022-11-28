@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Detalle Materiales</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+<ul class="nav justify-content-end">
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Bodega</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{/logout}">Cerrar sesión</a>
+    </li>
+</ul>
+
+<div class="container">
+
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+        <form th:action="@{/materiales/agregar}" method="post" th:object="${material}">
+            <div class="form-group">
+                <input type="text" th:field="*{precio}" class="form-control" placeholder="Ingresa precio">
+            </div>
+            <div class="form-group">
+                <input type="text" th:field="*{nombre}" class="form-control" placeholder="Ingresa nombre">
+            </div>
+            <div class="form-group">
+                <input type="text" th:field="*{bodega.nombre}" class="form-control" placeholder="Ingresa nombre bodega">
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+    </div>
+    <div class="col-sm-4">
+        <p></p>
+    </div>
+    <div class="col-sm-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Bodega</th>
+                    <th scope="col">Ingreso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="detalle: ${materiales}">
+                    <td th:text="${detalle.precio}"/>
+                    <td th:text="${detalle.nombre}"/>
+                    <td th:text="${detalle.bodega.nombre}"/>
+                    <td th:text="${#dates.format(new java.util.Date(detalle.ingreso), 'dd-MM-yyyy')}"/>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
