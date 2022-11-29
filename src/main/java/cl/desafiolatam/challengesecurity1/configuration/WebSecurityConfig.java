@@ -8,29 +8,29 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-@EnableWebSecurity
-@Configuration
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+@EnableWebSecurity  //Anotacion indica que se aplicara EnableWebSecurity
+@Configuration		//Anotacion que declara la configuracion 
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter { //Inicio de la clase WebSecurityConfig que extiende (hereda) laClase WebSecurityAdapter
 
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+    @Override //Anotacion de Sobreescribir.
+    public void configure(AuthenticationManagerBuilder auth) throws Exception { //Metodo configure que crea dos usuarios  a traves del objeto de gestion de autenticacion
         auth.inMemoryAuthentication()
-                .withUser("jbl@mail.com")
-                .password(passwordEncoder().encode("bar"))
-                .roles("BODEGA")
-        .and()
-        .withUser("bose@mail.com")
-                .password(passwordEncoder().encode("msc"))
+                .withUser("jbl@mail.com")//Crea con el usuario "jbl@gmail.com"
+                .password(passwordEncoder().encode("bar"))//ingresa un contraseña codificada (bar)
+                .roles("BODEGA")//asigna el rol de bodega al usuario 
+        .and()//es un concatenador del metodo inMemoryAutentication
+        .withUser("bose@mail.com") //asigana un nuevo usuario llamado "bose@gmail.com"
+                .password(passwordEncoder().encode("msc"))//ingresa una contraseña 
                 .roles("BODEGA");
     }
 
-    @Override
-    public void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/materiales/**").hasRole("BODEGA")
-                .antMatchers("/login").permitAll()
-                .anyRequest().authenticated()
+    @Override // sobreescribir el siguiente metodo
+    public void configure(HttpSecurity http) throws Exception { // Metodo sin retorno con una extencion Exception
+        http.csrf().disable()//
+        .authorizeRequests()
+                .antMatchers("/materiales/**").hasRole("BODEGA")// configura la ruta "/materiales**" solo para los que tengan como rol "Bodega"
+                .antMatchers("/login").permitAll()//Se configura la ruta login a todos los usuarios que intenten acceder
+                .anyRequest().authenticated()//
                 .and()
                 .formLogin()
                 .loginPage("/login")
