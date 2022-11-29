@@ -2,63 +2,63 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>Detalle Materiales</title>
+<head>               <!--CABEZA DEL HTML-->
+    <title>Detalle Materiales</title>         <!-- TITULO DEL HTML-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">          <!-- LINK PARA IMPORTAR BOOTSTRAP-->
+</head>           <!--CIERRE DEL LA CABEZA DEL HTML-->
 
-<body>
-<ul class="nav justify-content-end">
-    <li class="nav-item">
-        <a class="nav-link active" href="#">Bodega</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" th:href="@{/logout}">Cerrar sesión</a>
-    </li>
-</ul>
+<body>         <!-- CUERPO DEL HTML-->
+<ul class="nav justify-content-end">           <!-- LISTA SIN ORDEN-->
+    <li class="nav-item">           <!-- ELEMENTO DE LA LISTA-->
+        <a class="nav-link active" href="#">Bodega</a>           <!--TEXTO QUE REDIRECCIONA A LA PAGINA SEÑALADA--> 
+    </li>           <!--CIERRE DEL ELEMENTO DE LA LISTA-->
+    <li class="nav-item">       <!--ELEMENTO DE LA LISTA-->
+        <a class="nav-link" th:href="@{/logout}">Cerrar sesión</a>       <!--TEXTO QUE REDIRECCIONA A LA PAGINA SEÑALADA--> 
+    </li>        <!--CIERRE DEL ELEMENTO DE LA LISTA-->
+</ul>        <!-- CIERRE DE LA LISTA NO ORDENADA-->
 
-<div class="container">
+<div class="container">       <!-- CONTENEDOR-->
 
-    <div class="col-sm-4">
-    </div>
-    <div class="col-sm-4">
-        <form th:action="@{/materiales/agregar}" method="post" th:object="${material}">
-            <div class="form-group">
-                <input type="text" th:field="*{precio}" class="form-control" placeholder="Ingresa precio">
-            </div>
-            <div class="form-group">
-                <input type="text" th:field="*{nombre}" class="form-control" placeholder="Ingresa nombre">
-            </div>
-            <div class="form-group">
-                <input type="text" th:field="*{bodega.nombre}" class="form-control" placeholder="Ingresa nombre bodega">
-            </div>
-            <button type="submit" class="btn btn-primary">Agregar</button>
-        </form>
-    </div>
-    <div class="col-sm-4">
-        <p></p>
-    </div>
-    <div class="col-sm-12">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Bodega</th>
-                    <th scope="col">Ingreso</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="detalle: ${materiales}">
-                    <td th:text="${detalle.precio}"/>
-                    <td th:text="${detalle.nombre}"/>
-                    <td th:text="${detalle.bodega.nombre}"/>
-                    <td th:text="${#dates.format(new java.util.Date(detalle.ingreso), 'dd-MM-yyyy')}"/>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <div class="col-sm-4">        <!--DIV QUE INDICA UN TERCIO DE LAS COLUMNAS-->
+    </div>      <!--CIERRE DEL DIV-->
+    <div class="col-sm-4">             <!--DIV QUE INDICA UN TERCIO DE LAS COLUMNAS-->
+        <form th:action="@{/materiales/agregar}" method="post" th:object="${material}">             <!-- FORMULARIO DE METODO POST QUE ACCIONA EL AÑADIR MATERIALES-->
+            <div class="form-group">              <!--DIV DE GRUPO DE FORMULARIO--> 
+                <input type="text" th:field="*{precio}" class="form-control" placeholder="Ingresa precio">              <!--INPUT DE TIPO TEXTO,PERO DEBE SER INSERTADO UN NUMERO -->
+            </div>             <!--CIERRE DEL DIV-->
+            <div class="form-group">            <!-- DIV DE GRUPO DE FORMULARIO-->
+                <input type="text" th:field="*{nombre}" class="form-control" placeholder="Ingresa nombre">            <!--INPUT DE TIPO TEXTO -->
+            </div>            <!--CIERRE DEL DIV-->
+            <div class="form-group">              <!-- DIV DE GRUPO DE FORMULARIO--> 
+                <input type="text" th:field="*{bodega.nombre}" class="form-control" placeholder="Ingresa nombre bodega">           <!--INPUT DE TIPO TEXTO -->
+            </div>            <!--CIERRE DEL DIV-->
+            <button type="submit" class="btn btn-primary">Agregar</button>           <!-- BOTON PARA SUBIR FORMULARIO-->
+        </form>         <!--CIERRE DEL FORMULARIO-->
+    </div>             <!--CIERRE DEL DIV-->
+    <div class="col-sm-4">            <!--DIV QUE INDICA UN TERCIO DE LAS COLUMNAS-->
+        <p></p>        <!--PARRAFO -->
+    </div>             <!--CIERRE DEL DIV-->
+    <div class="col-sm-12">            <!--DIV QUE INDICA LA TOTALIDAD DE LAS COLUMNAS-->
+        <table class="table">           <!--INICIO DE TABLA -->
+            <thead>           <!--CABECERA DE LA TABLA-->
+                <tr>            <!--FILA DE LA TABLA -->
+                    <th scope="col">Precio</th>       <!--CELDA DE CABECERA DE TABLA-->
+                    <th scope="col">Nombre</th>       <!--CELDA DE CABECERA DE TABLA-->  
+                    <th scope="col">Bodega</th>       <!--CELDA DE CABECERA DE TABLA-->
+                    <th scope="col">Ingreso</th>      <!--CELDA DE CABECERA DE TABLA-->
+                </tr>         <!--FIN DE LA FILA DE LA TABLA--> 
+            </thead>           <!-- FIN DE LA CABECERA DE LA TABLA-->
+            <tbody>        <!-- CUERPO DE LA TABLA-->
+                <tr th:each="detalle: ${materiales}">             <!--ITERADOR DE MATERIALES-->
+                    <td th:text="${detalle.precio}"/>          <!-- PRECIO DEL MATERIAL-->
+                    <td th:text="${detalle.nombre}"/>          <!-- NOMBRE DEL MATERIAL-->
+                    <td th:text="${detalle.bodega.nombre}"/>            <!-- NOMBRE DE LA BODEGA DEL MATERIAL-->
+                    <td th:text="${#dates.format(new java.util.Date(detalle.ingreso), 'dd-MM-yyyy')}"/>            <!--FECHA ACTUAL  QUE SE INSERTA-->
+                </tr>              <!--FIN DE LA FILA DE LA TABLA-->
+            </tbody>             <!-- FIN DEL CUERPO DE LA TABLA-->
+        </table>             <!-- FIN  DE TABLA-->
+    </div>                <!-- CIERRE DEL DIV-->
 
 </div>
 </body>

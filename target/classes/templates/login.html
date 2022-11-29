@@ -3,38 +3,38 @@
       xmlns:th="http://www.thymeleaf.org">
 
 
-<head>
-    <title>Iniciar Sesión</title>
+<head>      <!--CABEZA DEL HTML-->
+    <title>Iniciar Sesión</title>    <!--titulo del html-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">       <!-- LINK PARA IMPORTAR BOOTSTRAP-->
+</head>       <!--CIERRE DEL LA CABEZA DEL HTML-->
+<body>        <!-- CUERPO DEL HTML-->
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-        </div>
-        <div class="col-sm-4">
-            <form th:action="@{/login}" method="post" class="form-signin">
-                <h3 class="form-signin-heading" th:text="Credenciales"></h3>
-                <br/>
+<div class="container">      <!--CONTENEDOR-->
+    <div class="row">        <!--DIV QUE INDICA LAS FILAS DE BOOTSTRAP-->
+        <div class="col-sm-4">       <!--DIV QUE INDICA UN TERCIO DE LAS COLUMNAS-->
+        </div>                   <!-- CIERRE DEL DIV-->
+        <div class="col-sm-4">        <!-- DIV QUE INDICA UN TERCIO DE LAS COLUMNAS-->
+            <form th:action="@{/login}" method="post" class="form-signin">       <!--FORMULARIO DE TIPO POST -->
+                <h3 class="form-signin-heading" th:text="Credenciales"></h3>     <!--CABECERA DE NIVEL 3 -->
+                <br/>        <!--SALTO DE LINEA-->
                 <input type="text" id="email" name="email" th:placeholder="Email"
-                       class="form-control"/> <br/>
-                <input type="password" th:placeholder="Password"
-                       id="password" name="password" class="form-control"/> <br/>
+                       class="form-control"/> <br/>          <!--INPUT QUE INDICA TIPO EMAIL --> 
+                <input type="password" th:placeholder="Password" 
+                       id="password" name="password" class="form-control"/> <br/>          <!--INPUT DE TIPO PASSWORD -->
 
-                <div align="center" th:if="${param.error}">
-                    <p style="font-size: 20; color: #FF1C19;">Verifica las credenciales.</p>
-                </div>
+                <div align="center" th:if="${param.error}">              <!--IF (CONDICIONAL QUE CHEQUEA SI LAS CREDENCIALES SON APROPIADAS) -->
+                    <p style="font-size: 20; color: #FF1C19;">Verifica las credenciales.</p>       <!--PARRAFO QUE INDICA QUE VERIFIQUE LAS CREDENCIALES-->
+                </div>          <!--CIERRE DEL DIV-->
                 <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit"
-                        th:text="Login">
-                </button>
-            </form>
+                        th:text="Login">              <!--BOTON PARA SUBIR LAS CREDENCIALES -->
+                </button>          <!-- CIERRE DEL BUTTON-->
+            </form>          <!--CIERRE DE FORMULARIO-->
 
-        </div>
-        <div class="col-sm-4">
-        </div>
-    </div>
-</div>
-</body>
-</html>
+        </div>        <!--CIERRE DE DIV -->
+        <div class="col-sm-4">       <!--DIV QUE INDICA UN TERCIO DE LAS COLUMNAS-->
+        </div>      <!-- CIERRE DEL DIV-->
+    </div>        <!--CIERRE DEL DIV-->
+</div> <!--CIERRE DEL DIV -->
+</body> <!-- CIERRE DEL BODY -->
+</html> <!-- CIERRE DEL HTML -->
