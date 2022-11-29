@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class ChallengeSecurity1ApplicationTests {
 
-	@Test
+	@Test // testeo de springboot
 	void contextLoads() {
 	}
 
