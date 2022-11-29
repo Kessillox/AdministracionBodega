@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class Material {
+public class Material {													//Se crea la clase "Material" que tiene los atributos nombre, precio, ingreso y contiene un objeto tipo "Bodega" 
 
     private String nombre;
     private Long precio;

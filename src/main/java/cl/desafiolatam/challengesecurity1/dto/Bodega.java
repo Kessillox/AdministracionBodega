@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Bodega {
+public class Bodega {							//Se crea la clase "Bodega" con el atributo "nombre"
 
     private String nombre;
 
