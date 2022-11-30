@@ -10,7 +10,7 @@ public class LoginController {//se encarga de mostrar la página de inicio de se
     @GetMapping("/login") //nos permite simplificar el manejo de los diferentes métodos de Spring MVC y los @RequestMappings
     public ModelAndView login(){//Representa un modelo y una vista devueltos por un controlador, para ser resueltos por un DispatcherServlet.
 
-        return new ModelAndView("login");//Retorna 
+        return new ModelAndView("");//Retorna
     }
 
 }
